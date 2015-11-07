@@ -1,19 +1,29 @@
 using System;
+using System.Collections.Generic;
 
 class Program
 {
-	static int limit = 1000;
-	static void Main() {
-		Console.Write("0 1 ");
-		Fibonacci(0, 1);
+	static Dictionary<int,int> solutions = new Dictionary<int,int>();
+	
+	static void Main(string[] args)
+	{
+		int limit;
+		if(!ArgParse.TryInt(args, out limit))
+			return;
+		int result = 0;
+		for (int ii = 1; result < limit; ii++)
+		{
+			Console.Write(result + " ");
+			result = Fibonacci(ii);
+		}
 	}
 	
-	static void Fibonacci(int previous, int current) {
-		int next = previous + current;
-		if (next <= limit)
-		{
-			Console.Write(next + " ");
-			Fibonacci(current, next);
-		}
+	static int Fibonacci(int x)
+	{
+		if(x == 0 || x == 1) return x;
+		int value;
+		if(!solutions.TryGetValue(x, out value))
+			solutions[x] = value = Fibonacci(x - 1) + Fibonacci(x - 2);
+		return value;
 	}
 }
