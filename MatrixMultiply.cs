@@ -23,9 +23,6 @@ class Program
 		
 		var matrixR = new int[rowsA,columnsB];
 		
-		var temp = matrixA[0,0] * matrixB[0,0];
-		temp += matrixA[0,1] * matrixB[1,0];
-		
 		for (int ii = 0; ii < rowsA; ii++)
 		{
 			for (int jj = 0; jj < columnsB; jj++)
