@@ -1,4 +1,6 @@
 cls
-csc Decompress.cs
+::csc Decompress.cs
+csc StringCompress.cs
 
-Decompress
+::Decompress
+StringCompress

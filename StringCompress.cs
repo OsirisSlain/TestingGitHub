@@ -5,30 +5,42 @@ class Program
 {
 	static void Main(string[] args)
 	{
-		var inputString = args[0];
-		Console.WriteLine(CompressString(inputString));
+		//var inputString = args[0];
+		//Console.WriteLine(CompressString(inputString));
+		Console.WriteLine(Compress("aaaaabbbbbccccc."));
+		Console.WriteLine(Compress("5-29"));
 	}
 	
-	static string CompressString(string original)
+	static string Compress(string original)
 	{
-		var currentItemCount = 1;
-		char? currentItem = null;
+		var repeat = 1;
+		char? last = null;
+		bool escapeMode = false;
+		var escapeChar = '-';
 		var compressed = new StringBuilder();
 		
-		foreach (var item in original)
+		Action write = () =>{
+			compressed.Append(last);
+			if(repeat != 1) compressed.Append(repeat);
+		};
+		
+		foreach (var c in original)
 		{
-			if (currentItem == item)
-				currentItemCount++;
+			if(c == escapeChar || char.IsDigit(c))
+			{
+				compressed.Append(string.Format("{0}{1}",escapeChar,c));
+				continue;
+			}
+			if (c == last)
+				repeat++;
 			else
 			{
-				compressed.Append(currentItem);
-				if(currentItemCount != 1)
-					compressed.Append(currentItemCount);
-				currentItemCount = 1;
-				currentItem = item;
+				write();
+				repeat = 1;
+				last = c;
 			}
 		}
-		compressed.Append(currentItem);
+		write();
 		return compressed.ToString();
 	}
 }
