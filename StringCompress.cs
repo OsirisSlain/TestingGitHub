@@ -7,7 +7,7 @@ class Program
 	{
 		//var inputString = args[0];
 		//Console.WriteLine(CompressString(inputString));
-		Console.WriteLine(Compress("aaaaabbbbbccccc."));
+		Console.WriteLine(Compress("aaaaa22222222222222222222222bbbbbccccc."));
 		Console.WriteLine(Compress("5-29"));
 	}
 	

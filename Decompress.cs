@@ -5,6 +5,8 @@ class Program
 {
 	static void Main()
 	{
+		//var inputString = args[0];
+		//Console.WriteLine(CompressString(inputString));
 		Console.WriteLine(Decompress("A normal string with nothing repeated."));
 		Console.WriteLine(Decompress("An almost normal string with -93 (three nines) in the middle."));
 		Console.WriteLine(Decompress("23 digits at start."));
