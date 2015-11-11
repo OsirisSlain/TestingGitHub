@@ -7,19 +7,19 @@ namespace Question
 	{
 		static void Main()
 		{
-			int[] sample = {11, 4, 3, 3, 6, 3, 7, 2, 9};
+			int[] input = {11, 4, 3, 3, 6, 3, 7, 2, 9};
 			int[] expected = {-1, 3, 2, 1, 2, 1, 2, 1, -1};
 			
 			Console.WriteLine("Input");
-			WriteLine(sample);
+			WriteLine(input);
 			
 			Console.WriteLine("Expected");
 			WriteLine(expected);
 			
-			var stackResult = NextLargest_Stack(sample);
+			var stackResult = NextLargest_Stack(input);
 			VerboseVerify(expected, stackResult, "Stack");
 			
-			var loopResult = NextLargest_Loop(sample);
+			var loopResult = NextLargest_Loop(input);
 			VerboseVerify(expected, loopResult, "Loop");
 		}
 		
@@ -33,12 +33,10 @@ namespace Question
 			var result = Verify(expected, actual);
 			
 			if(result)
-				Console.WriteLine(testName + " results match expected.");
+				Console.WriteLine(testName + " results match expected:");
 			else
-			{
 				Console.WriteLine(testName + " results don't match expected:");
-				WriteLine(actual);
-			}
+			WriteLine(actual);
 				
 			return result;
 		}
@@ -54,37 +52,34 @@ namespace Question
 		}
 		
 		//stack based solution
-		static int[] NextLargest_Stack(int[] original)
+		static int[] NextLargest_Stack(int[] aa)
 		{
-			int[] result = new int[original.Length];
+			int[] result = new int[aa.Length];
 			var index = new Stack<int>();
 		
-			for(int i = 0; i < original.Length; i++)
+			for(int i = 0; i < aa.Length; i++)
 			{
-				while(index.Count > 0 && original[i] > original[index.Peek()])
+				result[i] = -1;
+				while(index.Count > 0 && aa[i] > aa[index.Peek()])
 				{
 					var top = index.Pop();
 					result[top] = i - top;
 				}
 				index.Push(i);
 			}
-			while(index.Count > 0)
-			{
-				result[index.Pop()] = -1;
-			}
 			return result;
 		}
 		
 		//simple nested loop solution
-		static int[] NextLargest_Loop(int[] original)
+		static int[] NextLargest_Loop(int[] aa)
 		{
-			int[] result = new int[original.Length];
-			for(int i = 0; i < original.Length; i++)
+			int[] result = new int[aa.Length];
+			for(int i = 0; i < aa.Length; i++)
 			{
 				result[i] = -1;
-				for(int j = 1; j < original.Length - i; j++)
+				for(int j = 1; j < aa.Length - i; j++)
 				{
-					if(original[i] < original[i+j])
+					if(aa[i] < aa[i+j])
 					{
 						result[i] = j;
 						break;
