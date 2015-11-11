@@ -4,6 +4,7 @@
 # Blake's Modifications
 *.exe
 *.dll
+*.swp
 
 # User-specific files
 *.suo

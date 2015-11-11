@@ -8,7 +8,7 @@ class Program
 	static void Main(string[] args)
 	{
 		int limit;
-		if(!ArgParse.TryInt(args, out limit))
+		if(!ArgParse.TryIntVerbose(args, out limit))
 			return;
 		int result = 0;
 		for (int ii = 1; result < limit; ii++)
@@ -16,6 +16,7 @@ class Program
 			Console.Write(result + " ");
 			result = Fibonacci(ii);
 		}
+		Console.WriteLine();
 	}
 	
 	static int Fibonacci(int x)

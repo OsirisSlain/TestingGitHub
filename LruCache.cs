@@ -1,6 +1,27 @@
 using System;
 using System.Collections.Generic;
 
+class Program
+{
+	static void Main()
+	{
+		var cache = new LruCache<int,int>(getNum, 7);
+		for (int i = 0; i < 10; i++)
+			Console.Write(cache.GetItem(i) + " ");
+		for (int i = 9; i >= 0; i--)
+			Console.Write(cache.GetItem(i) + " ");
+		for (int i = 0; i < 10; i++)
+			Console.Write(cache.GetItem(i) + " ");
+		Console.WriteLine();
+	}
+	
+	static int getNum(int num)
+	{
+		Console.Write("X"); //signifies cache miss
+		return num;
+	}
+}
+
 class LruCache<TKey, TVal>
 {
 	int _cacheSize;

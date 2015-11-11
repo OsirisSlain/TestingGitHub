@@ -3,17 +3,22 @@ using System.Text;
 
 class Program
 {
-	static void Main()
+	static void Main(string[] args)
 	{
-		//var inputString = args[0];
-		//Console.WriteLine(CompressString(inputString));
-		Console.WriteLine(Decompress("A normal string with nothing repeated."));
-		Console.WriteLine(Decompress("An almost normal string with -93 (three nines) in the middle."));
-		Console.WriteLine(Decompress("23 digits at start."));
-		Console.WriteLine(Decompress("-2-3 escaped digits at start."));
-		Console.WriteLine(Decompress("lots10 of s10's."));
-		Console.WriteLine(Decompress("-533--"));
-		Console.WriteLine(Decompress("s5"));
+		if(args.Length > 0)
+		{
+			Console.WriteLine(Decompress(args[0]));
+		}
+		else
+		{
+			Console.WriteLine(Decompress("A normal string with nothing repeated."));
+			Console.WriteLine(Decompress("An almost normal string with -93 (three nines) in the middle."));
+			Console.WriteLine(Decompress("23 digits at start."));
+			Console.WriteLine(Decompress("-2-3 escaped digits at start."));
+			Console.WriteLine(Decompress("lots10 of s10's."));
+			Console.WriteLine(Decompress("-533--"));
+			Console.WriteLine(Decompress("s5"));
+		}
 	}
 	
 	static string Decompress(string compressed)

@@ -1,15 +1,10 @@
 using System;
 
+//Functions for parsing input arguments
 public class ArgParse
 {
+	//Try to get the first input argument as an int
 	public static bool TryInt(string[] args, out int result)
-	{
-		var valid = tryInt(args, out result);
-		if(!valid)
-			Console.WriteLine("Input Error");
-		return valid;
-	}
-	private static bool tryInt(string[] args, out int result)
 	{
 		result = 0;
 		if (args.Length < 1)
@@ -19,5 +14,12 @@ public class ArgParse
 		if(result < 0)
 			return false;
 		return true;
+	}
+	public static bool TryIntVerbose(string[] args, out int result)
+	{
+		var success = TryInt(args, out result);
+		if(!success)
+			Console.WriteLine("Input Error");
+		return success;
 	}
 }

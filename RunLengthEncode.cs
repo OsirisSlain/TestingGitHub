@@ -5,17 +5,22 @@ class Program
 {
 	static void Main(string[] args)
 	{
-		//var inputString = args[0];
-		//Console.WriteLine(CompressString(inputString));
-		Console.WriteLine(Compress("aaaaa22222222222222222222222bbbbbccccc."));
-		Console.WriteLine(Compress("5-29"));
+		if(args.Length > 0)
+		{
+			var inputString = args[0];
+			Console.WriteLine(Compress(inputString));
+		}
+		else
+		{
+			Console.WriteLine(Compress("aaaaa22222222222222222222222bbbbbccccc."));
+			Console.WriteLine(Compress("5-29"));
+		}
 	}
 	
 	static string Compress(string original)
 	{
 		var repeat = 1;
 		char? last = null;
-		bool escapeMode = false;
 		var escapeChar = '-';
 		var compressed = new StringBuilder();
 		

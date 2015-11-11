@@ -5,12 +5,14 @@ class Program
 	static void Main(string[] args)
 	{
 		int number;
-		if(!ArgParse.TryInt(args, out number))
+		if(!ArgParse.TryIntVerbose(args, out number))
 			return;
 		for (int ii = 1; ii <= number; ii++)
 		{
-			if(IsFactor(number,ii)) Console.Write(ii + " ");
+			if(IsFactor(number,ii))
+				Console.Write(ii + " ");
 		}
+		Console.WriteLine();
 	}
 	
 	static bool IsFactor(int number, int factor)

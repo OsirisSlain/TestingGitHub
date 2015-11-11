@@ -5,7 +5,7 @@ class Program
 	static void Main()
 	{
 		var matrixA = new int[,] {{-1,4,3},{5,2,3},{5,2,3}};
-		var matrixB = new int[,] {{1},{3},{5}};
+		var matrixB = new int[,] {{1,2},{3,4},{5,6}};
 		MatrixMultiply(matrixA, matrixB);
 	}
 	
