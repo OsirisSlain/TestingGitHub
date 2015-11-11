@@ -2,8 +2,6 @@ using System;
 using System.Text;
 using System.Linq;
 
-//write a program that, given an array of 'missing' numbers from 0-99,
-//returns a string representation of those ranges
 class Program
 {
 	static void Main()
@@ -16,16 +14,16 @@ class Program
 	static string GetStringRepresentation(int[] missingNums)
 	{
 		var sortedNums = missingNums.OrderBy(x => x).ToList();
-		
 		var stringRep = new StringBuilder();
+		
 		stringRep.Append(getPairString(-1,sortedNums[0]));
 		for (int ii = 1; ii < sortedNums.Count - 1; ii++)
 		{
 			stringRep.Append(getPairString(sortedNums[ii], sortedNums[ii+1]));
 		}
 		stringRep.Append(getPairString(sortedNums[sortedNums.Count - 1], 100));
-		stringRep.Length--; //get rid of comma
 		
+		stringRep.Length--; //get rid of comma
 		return stringRep.ToString();
 	}
 	
