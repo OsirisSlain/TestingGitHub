@@ -20,8 +20,7 @@ class Program
 		if(factor == 1 || factor == number)
 			return true;
 			
-		int halfNumber = number/2;
-		for(int ii = 2; ii <= halfNumber; ii++)
+		for(int ii = 2; ii * factor <= number; ii++)
 		{
 			if(ii * factor == number)
 				return true;
